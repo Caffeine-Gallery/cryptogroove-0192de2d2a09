@@ -6,7 +6,22 @@ document.addEventListener('DOMContentLoaded', async () => {
   feather.replace();
 
   quill = new Quill('#editor', {
-    theme: 'snow'
+    theme: 'snow',
+    modules: {
+      toolbar: [
+        ['bold', 'italic', 'underline', 'strike'],
+        ['blockquote', 'code-block'],
+        [{ 'header': 1 }, { 'header': 2 }],
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        [{ 'script': 'sub'}, { 'script': 'super' }],
+        [{ 'indent': '-1'}, { 'indent': '+1' }],
+        [{ 'direction': 'rtl' }],
+        [{ 'color': [] }, { 'background': [] }],
+        [{ 'font': [] }],
+        [{ 'align': [] }],
+        ['clean']
+      ]
+    }
   });
 
   const newPostBtn = document.getElementById('newPostBtn');
@@ -51,10 +66,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         const postElement = document.createElement('article');
         postElement.classList.add('post');
         postElement.innerHTML = `
+          <div class="terminal-line">
+            <span class="prompt">root@cryptohacker:~$</span> cat post_${post.id}.txt
+          </div>
           <h2>${post.title}</h2>
-          <p class="author">By ${post.author}</p>
+          <p class="author">Author: ${post.author}</p>
           <div class="post-content">${post.body}</div>
-          <p class="timestamp">${new Date(Number(post.timestamp) / 1000000).toLocaleString()}</p>
+          <p class="timestamp">Timestamp: ${new Date(Number(post.timestamp) / 1000000).toLocaleString()}</p>
         `;
         postsSection.appendChild(postElement);
       });
