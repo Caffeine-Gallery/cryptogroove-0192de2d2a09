@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Disco Blog</title>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <header>
+        <h1>Crypto Disco Blog</h1>
+        <button id="newPostBtn"><i data-feather="plus-circle"></i> New Post</button>
+    </header>
+
+    <main>
+        <section id="postForm" class="hidden">
+            <h2>Create New Post</h2>
+            <form id="blogForm">
+                <input type="text" id="title" placeholder="Title" required>
+                <input type="text" id="author" placeholder="Author" required>
+                <div id="editor"></div>
+                <button type="submit"><i data-feather="send"></i> Submit</button>
+            </form>
+        </section>
+
+        <section id="posts">
+            <!-- Posts will be dynamically inserted here -->
+        </section>
+    </main>
+
+    <div id="loadingSpinner" class="hidden">
+        <i data-feather="loader"></i>
+    </div>
+
+    <script type="module" src="index.js"></script>
+</body>
+</html>
